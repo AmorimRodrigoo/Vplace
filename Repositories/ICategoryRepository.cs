@@ -8,7 +8,7 @@ public interface ICategoryRepository
     Task<IEnumerable<Category>> GetCategoriesProducts();
     Task<Category> GetById(int id);
     Task<Category> Create(Category category);
-    Task<Category> Update(int id, Category category);
+    Task<Category> Update(Category category);
     Task<Category> Delete(int id);
     
 }
