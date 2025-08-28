@@ -1,9 +1,10 @@
 ﻿using ProductApi.Models;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ProductApi.DTOs;
 
-public class ProductDTO
+public class ProductDto
 {
     public int Id { get; set; }
     
@@ -25,6 +26,8 @@ public class ProductDTO
     public string? Description { get; set; }
     public string? ImageUrl { get; set; }
     
+    [JsonIgnore]
     public Category? Category { get; set; }
+    
     public int CategoryId { get; set; }
 }

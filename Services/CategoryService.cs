@@ -17,32 +17,32 @@ public class CategoryService : ICategoryService
     private readonly ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
     
-    public async Task<IEnumerable<CategoryDTO>> GetCategories()
+    public async Task<IEnumerable<CategoryDto>> GetCategories()
     {
-        var categoriesEntitiy = await _categoryRepository.GetAll();
-        return _mapper.Map<IEnumerable<CategoryDTO>>(categoriesEntitiy);
+        var categoriesEntity = await _categoryRepository.GetAll();
+        return _mapper.Map<IEnumerable<CategoryDto>>(categoriesEntity);
     }
 
-    public async Task<CategoryDTO> GetCategoriesById(int id)
+    public async Task<CategoryDto> GetCategoriesById(int id)
     {
-        var categoriesEntitiy = await _categoryRepository.GetById(id);
-        return _mapper.Map<CategoryDTO>(categoriesEntitiy);
+        var categoriesEntity = await _categoryRepository.GetById(id);
+        return _mapper.Map<CategoryDto>(categoriesEntity);
     }
     
-    public async Task<IEnumerable<CategoryDTO>> GetCategoriesProducts()
+    public async Task<IEnumerable<CategoryDto>> GetCategoriesProducts()
     {
-        var categoriesEntitiy = await _categoryRepository.GetCategoriesProducts();
-        return _mapper.Map<IEnumerable<CategoryDTO>>(categoriesEntitiy);
+        var categoriesEntity = await _categoryRepository.GetCategoriesProducts();
+        return _mapper.Map<IEnumerable<CategoryDto>>(categoriesEntity);
     }
 
-    public async Task CreateCategory(CategoryDTO categoryDto)
+    public async Task CreateCategory(CategoryDto categoryDto)
     {
         var categoryEntity = _mapper.Map<Category>(categoryDto);
         await _categoryRepository.Create(categoryEntity);
-        categoryDto.CategoryID = categoryEntity.CategoryId;;
+        categoryDto.CategoryId = categoryEntity.CategoryId;;
     }
 
-    public async Task UpdateCategory(CategoryDTO categoryDto)
+    public async Task UpdateCategory(CategoryDto categoryDto)
     {
         var categoryEntity = _mapper.Map<Category>(categoryDto);
         await _categoryRepository.Update(categoryEntity);

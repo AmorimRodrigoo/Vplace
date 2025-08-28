@@ -3,9 +3,9 @@ using ProductApi.Models;
 
 namespace ProductApi.DTOs;
 
-public class CategoryDTO
+public class CategoryDto
 {
-    public int CategoryID { get; set; }
+    public int CategoryId { get; set; }
     
     [Required(ErrorMessage = "Name is required")]
     [MinLength(3)]

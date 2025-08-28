@@ -1,13 +1,14 @@
 ﻿using ProductApi.DTOs;
+using ProductApi.Models;
 
 namespace ProductApi.Services.Interface;
 
 public interface ICategoryService
 {
-    Task<IEnumerable<CategoryDTO>> GetCategories();
-    Task<IEnumerable<CategoryDTO>> GetCategoriesProducts();
-    Task<CategoryDTO> GetCategoriesById(int id);
-    Task CreateCategory(CategoryDTO category);
-    Task UpdateCategory(CategoryDTO category);
+    Task<IEnumerable<CategoryDto>> GetCategories();
+    Task<IEnumerable<CategoryDto>> GetCategoriesProducts();
+    Task<CategoryDto> GetCategoriesById(int id);
+    Task CreateCategory(CategoryDto category);
+    Task UpdateCategory(CategoryDto category);
     Task DeleteCategory(int id);   
 }

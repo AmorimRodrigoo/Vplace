@@ -10,7 +10,7 @@ public class ProductService : IProductService
 {
     
     private readonly IMapper _mapper;
-    private IProductRepository _productRepository;
+    private readonly IProductRepository _productRepository;
     
     public ProductService(IMapper mapper, IProductRepository productRepository)
     {
@@ -18,25 +18,25 @@ public class ProductService : IProductService
         _productRepository = productRepository;
     }
 
-    public async Task<IEnumerable<Product>> GetProducts()
+    public async Task<IEnumerable<ProductDto>> GetProducts()
     {
         var productsEntity = await _productRepository.GetAll();
-        return _mapper.Map<IEnumerable<Product>>(productsEntity);
+        return _mapper.Map<IEnumerable<ProductDto>>(productsEntity);
     }
 
-    public async Task<ProductDTO> GetProductById(int id)
+    public async Task<ProductDto> GetProductById(int id)
     {
         var productEntity = await _productRepository.GetById(id);
-        return _mapper.Map<ProductDTO>(productEntity);
+        return _mapper.Map<ProductDto>(productEntity);
     }
 
-    public async Task AddProduct(ProductDTO productDto)
+    public async Task AddProduct(ProductDto productDto)
     {
         var productEntity = _mapper.Map<Product>(productDto);
         await _productRepository.Create(productEntity);
     }
 
-    public async Task UpdateProduct(ProductDTO productDto)
+    public async Task UpdateProduct(ProductDto productDto)
     {
         var productEntity = _mapper.Map<Product>(productDto);
         await _productRepository.Update(productEntity);
